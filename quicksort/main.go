@@ -4,9 +4,8 @@ import "fmt"
 import "algoPractice/tools"
 
 func main() {
-	S := tools.SliceGenerator(33)
-	fmt.Println(S)
-	fmt.Print(quickSort(S))
+	S := tools.SliceGenerator(400)
+	fmt.Println(tools.Checker(quickSort(S)))
 }
 
 func quickSort(arr []int) []int {
