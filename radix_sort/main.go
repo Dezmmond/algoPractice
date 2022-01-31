@@ -18,8 +18,24 @@ func numDigits(slice []int) int {
 	return digits
 }
 
+func flatten(slice [][]int) (result []int) {
+	for i := 0; i < len(slice); i++ {
+		elem := slice[i]
+		result = append(result, elem...)
+	}
+	return result
+}
+
 func main() {
-	S := tools.SliceGenerator(1001)
-	max := numDigits(S)
-	fmt.Println(max)
+	S := tools.SliceGenerator(10)
+	digits := numDigits(S)
+	for i := 0; i < digits; i++ {
+		buff := make([][]int, 10)
+		for _, elem := range S {
+			num := (elem / tools.Pow(10, i)) % 10
+			buff[num] = append(buff[num], elem)
+		}
+		S = flatten(buff)
+	}
+	fmt.Println(tools.Checker(S))
 }
