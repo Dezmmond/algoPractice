@@ -1,18 +1,20 @@
 package main
 
-import "fmt"
 import "algoPractice/tools"
 
 func main() {
-	S := tools.SliceGenerator(10)
-	for i := 0; i < len(S); i++ {
+	shuffled := tools.SliceGenerator(10)
+	sliceCopy := make([]int, len(shuffled))
+	copy(sliceCopy, shuffled)
+
+	for i := 0; i < len(shuffled); i++ {
 		min := i
-		for j := i + 1; j < len(S); j++ {
-			if S[j] < S[min] {
+		for j := i + 1; j < len(shuffled); j++ {
+			if shuffled[j] < shuffled[min] {
 				min = j
 			}
 		}
-		S[i], S[min] = S[min], S[i]
+		shuffled[i], shuffled[min] = shuffled[min], shuffled[i]
 	}
-	fmt.Println(tools.Checker(S))
+	tools.Checker("Selection Sort", true, sliceCopy, shuffled)
 }

@@ -1,10 +1,11 @@
 package main
 
-import "fmt"
+import "algoPractice/tools"
 
 func main() {
-	S := []int{10, 5, 14, 7, 3, 2, 18, 4, 5, 13, 6, 8}
-	fmt.Print(mergeSort(S))
+	shuffled := tools.SliceGenerator(12)
+	result := mergeSort(shuffled)
+	tools.Checker("Merge Sort", true, shuffled, result)
 }
 
 func merge(left []int, right []int) []int {
@@ -39,7 +40,3 @@ func mergeSort(S []int) []int {
 
 	return merge(left, right)
 }
-
-
-
-

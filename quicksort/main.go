@@ -1,17 +1,18 @@
 package main
 
-import "fmt"
 import "algoPractice/tools"
 
 func main() {
-	S := tools.SliceGenerator(400)
-	fmt.Println(tools.Checker(quickSort(S)))
+	shuffled := tools.SliceGenerator(40)
+	result := quickSort(shuffled)
+	tools.Checker("Quick Sort", true, shuffled, result)
 }
 
 func quickSort(arr []int) []int {
 	if len(arr) < 2 {
 		return arr
 	}
+
 	var left []int
 	var right []int
 

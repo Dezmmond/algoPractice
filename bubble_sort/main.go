@@ -1,15 +1,17 @@
 package main
 
-import "fmt"
+import "algoPractice/tools"
 
 func main() {
-	S := []int{10, 5, 14, 7, 3, 2, 18, 4, 5, 13, 6, 8}
+	shuffled := tools.SliceGenerator(10)
+	sliceCopy := make([]int, len(shuffled))
+	copy(sliceCopy, shuffled)
 
-	for j := 1; j < len(S); j++ {
+	for j := 1; j < len(shuffled); j++ {
 		go_on := false
-		for i := 0; i < len(S)-j; i++ {
-			if S[i] > S[i+1] {
-				S[i], S[i+1] = S[i+1], S[i]
+		for i := 0; i < len(shuffled)-j; i++ {
+			if shuffled[i] > shuffled[i+1] {
+				shuffled[i], shuffled[i+1] = shuffled[i+1], shuffled[i]
 				go_on = true
 			}
 		}
@@ -17,6 +19,5 @@ func main() {
 			break
 		}
 	}
-
-	fmt.Println(S)
+	tools.Checker("Bubble Sort", true, sliceCopy, shuffled)
 }

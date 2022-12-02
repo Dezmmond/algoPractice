@@ -1,14 +1,16 @@
 package main
 
-import "fmt"
+import "algoPractice/tools"
 
 func main() {
-	S := []int{6, 5, 3, 12, 8, 7, 2, 4, 10, 11, 9, 1}
+	shuffled := tools.SliceGenerator(12)
+	sliceCopy := make([]int, len(shuffled))
+	copy(sliceCopy, shuffled)
 
-	for i := 1; i < len(S); i++ {
+	for i := 1; i < len(shuffled); i++ {
 		x := i
-		for S[x] < S[x-1] {
-			S[x-1], S[x] = S[x], S[x-1]
+		for shuffled[x] < shuffled[x-1] {
+			shuffled[x-1], shuffled[x] = shuffled[x], shuffled[x-1]
 			if x-1 == 0 {
 				break
 			}
@@ -16,5 +18,5 @@ func main() {
 		}
 
 	}
-	fmt.Print(S)
+	tools.Checker("Insertion Sort", true, sliceCopy, shuffled)
 }
